@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="NICER-SLAM: Neural Implicit Scene Encoding for RGB SLAM">
+  <meta name="keywords" content="NICER-SLAM: Neural Implicit Scene Encoding for RGB SLAM">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NICER-SLAM</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="./static/css/bootstrap-4.4.1.css">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  
+  
+  
+  
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/72.png">
+
+  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/app.js"></script>
+  <script src="./static/js/video_comparison.js"></script>
+
+  <link rel="stylesheet" href="./static/css/dics.original.css">
+  <script src="./static/js/event_handler.js"></script>
+  <script src="./static/js/dics.original.js"></script>
+  
+
+
+</head>
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <!-- <a class="navbar-item" href="https://pengsongyou.github.io">
+        <span class="icon">
+            <i class="fas fa-home"></i>
+        </span>
+        </a> -->
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <strong>NICE-SLAM</strong>
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://pengsongyou.github.io/nice-slam">
+              NICE-SLAM - CVPR 2022
+            </a>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><img src="static/images/72.png" width="70"></h1>
+          <h1 class="title is-1 publication-title">NICER-SLAM</h1>
+          <h2 class="title is-2 publication-title" style="margin-top: 0; margin-bottom: 0">Neural Implicit Scene Encoding for RGB SLAM</h2>
+
+          <div class="column is-full_width">
+            <h2 class="title is-4">3DV 2024 (Oral, <span style="color:#ff0000;">Best Paper Honorable Mention</span>)</h2>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://zzh2000.github.io">Zihan Zhu</a><sup>1*</sup></span>&nbsp;&nbsp;&nbsp;&nbsp;
+              <span class="author-block">
+                <a href="https://pengsongyou.github.io">Songyou Peng</a><sup>1,2 *</sup></span>&nbsp;&nbsp;&nbsp;&nbsp;
+              <span class="author-block">
+              <a href="http://people.inf.ethz.ch/vlarsson/">Viktor Larsson</a><sup>3</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <!-- <a href="https://zhpcui.github.io/">Zhaopeng Cui</a><sup>2<span>&#8224;</span> </sup>&nbsp;&nbsp;&nbsp;&nbsp; -->
+              <a href="https://zhpcui.github.io/">Zhaopeng Cui</a><sup>4</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="http://people.inf.ethz.ch/moswald/">Martin R. Oswald</a><sup>1,5</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+            <br>
+
+            <span class="author-block">
+              <a href="http://www.cvlibs.net/">Andreas Geiger</a><sup>6</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="https://people.inf.ethz.ch/pomarc/">Marc Pollefeys</a><sup>1,7</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+          </div>
+          <div class="column is-full_width">
+            <h2 class="is-size-6">* Equal Contribution</h2>
+            <!-- <h2 class="is-size-6">(* equal contribution)  (<span>&#8224;</span> corresponding author)</h2> -->
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>ETH Zürich</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup>MPI for Intelligent Systems, Tübingen</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>3</sup>Lund University</span>&nbsp;&nbsp;<br>
+            <span class="author-block"><sup>4</sup>State Key Lab of CAD&CG, Zhejiang University</span>&nbsp;&nbsp;
+            <span class="author-block"><sup>5</sup>University of Amsterdam</span>&nbsp;&nbsp;
+            <br>
+            <span class="author-block"><sup>6</sup>University of Tübingen, Tübingen AI Center</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>7</sup>Microsoft</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://drive.google.com/file/d/15IwFnyt2Oao5j-qHnPXqL4K1zuAHLIPD/view?usp=sharing"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/H4cOCa3oUno"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Poster Link. -->
+              <!-- <span class="link-block">
+                <a href="media/nice-slam/poster_nice-slam.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-palette"></i>
+                  </span>
+                  <span>Poster</span>
+                  </a>
+              </span> -->
+
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/cvg/nicer-slam"
+                   class="external-link button is-normal is-rounded is-dark disabled">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+  
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <video class="video" width="100%" id="xyalias6" loop playsinline autoplay muted src="resources/nice_vs_ours.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+          <canvas height=0 class="videoMerge" id="xyalias6Merge"></canvas>
+      
+          <h2 class="subtitle has-text-centered" style="margin-top: 15px">
+            TL;DR: We present NICER-SLAM, a dense RGB SLAM system that simultaneously optimizes for camera poses and a hierarchical neural implicit map representation, allowing high-quality 3D reconstruction and novel view synthesis.
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="margin-top: -30px">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Neural implicit representations have recently become popular in simultaneous localization and mapping (SLAM), especially in dense visual SLAM.
+            However, existing works either rely on RGB-D sensors or require a separate monocular SLAM approach for camera tracking, and fail to produce high-fidelity 3D dense reconstructions.
+            To address these shortcomings, we present NICER-SLAM, a dense RGB SLAM system that simultaneously optimizes for camera poses and a hierarchical neural implicit map representation, which also allows for high-quality novel view synthesis.
+            To facilitate the optimization process for mapping, we integrate additional supervision signals including easy-to-obtain monocular geometric cues and optical flow, and also introduce a simple warping loss to further enforce geometric consistency.
+            Moreover, to further boost performance in complex large-scale scenes, we also propose a local adaptive transformation from signed distance functions (SDFs) to density in the volume rendering equation.
+            On multiple challenging indoor and outdoor datasets, NICER-SLAM demonstrates strong performance in dense mapping, novel view synthesis, and tracking, even competitive with recent RGB-D SLAM systems.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    <!-- Paper video. -->
+    
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/H4cOCa3oUno?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+   
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" style="margin-top: -20px">Method</h2>
+
+        <img src="./resources/pipeline_overview_.jpg" class="center">
+        <div class="content has-text-justified">
+          <p style="margin-top: 30px">
+            <b>NICER-SLAM</b> takes only an RGB stream as input and outputs both the camera poses as well as a learned hierarchical scene representation for geometry and colors.
+            To realize an end-to-end joint mapping and tracking, we render predicted colors, depths, normals and optimize wrt. the input RGB and monocular cues. Moreover, we further enforce the geometric consistency with an RGB warping loss and an optical flow loss.
+          </p>
+        </div>
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Results. -->
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Additional Results</h2>
+
+        <h3 class="title is-4">Replica Dataset</h3>
+
+        <h3 class="title is-5">Reconstruction</h3>
+        <div class="embed-responsive embed-responsive-16by9">
+
+          <iframe style="clip-path: inset(1px 1px)" src="https://sketchfab.com/playlists/embed?collection=98147cf5e0e44418931f52a9646661fc&autostart=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" mozallowfullscreen="true" webkitallowfullscreen="true" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+
+        <div style="height: 30px;"></div> 
+        <h3 class="title is-5">Rendering</h3>
+        <div class="container">
+          <ul class="nav nav-tabs nav-fill nav-justified" id="replica-rendering">
+              <li class="nav-item active">
+                <a class="nav-link" onclick="replicaRenderingEvent(0)">room0</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="replicaRenderingEvent(1)">room1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="replicaRenderingEvent(2)">room2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="replicaRenderingEvent(3)">office0</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="replicaRenderingEvent(4)">office1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="replicaRenderingEvent(5)">office2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="replicaRenderingEvent(6)">office3</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="replicaRenderingEvent(7)">office4</a>
+              </li>
+          </ul>
+          <div class="b-dics" style="width: 1000px; font-weight: 600;">
+              <img src="resources/rendering/replica/room0_nice.jpg" alt="NICE-SLAM">
+              <img src="resources/rendering/replica/room0_dim.jpg" alt="DIM-SLAM">
+              <img src="resources/rendering/replica/room0_droid.jpg" alt="DROID-SLAM">
+              <img src="resources/rendering/replica/room0_ours.png" alt="NICER-SLAM (Ours)">
+              <img src="resources/rendering/replica/room0_gt.png" alt="GT">
+          </div>
+        </div>
+        
+        <div style="height: 50px;"></div> 
+        <h3 class="title is-4">7-Scenes Dataset</h3>
+        <!-- <div class="content has-text-justified">
+          <p>
+            Replacing the 2D dilation of 3DGS with an EWA (elliptical weighted average) filter, denoted as 3DGS + EWA, reduces the dilation and erosion artifacts.
+            However, it produces high-frequency artifacts when zooming in, while our method is free of such artifacts, as shown in the following comparisons.
+          </p>
+        </div> -->
+        
+        <div class="container">
+          <!-- <ul class="nav nav-tabs nav-fill nav-justified" id="7scenes-recon">
+              <li class="nav-item">
+                <a class="nav-link" onclick="sevenScenesReconEvent(0)">room0</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" onclick="sevenScenesReconEvent(1)">room1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="sevenScenesReconEvent(2)">room2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="sevenScenesReconEvent(3)">room3</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="sevenScenesReconEvent(4)">room4</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="sevenScenesReconEvent(5)">office0</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="sevenScenesReconEvent(6)">office1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="sevenScenesReconEvent(7)">office2</a>
+              </li>
+          </ul> -->
+          <div class="b-dics" style="width: 1000px; font-weight: 600;">
+              <img src="resources/recon/7scenes/7scenes_office_nice_normal.jpg" alt="NICE-SLAM">
+              <img src="resources/recon/7scenes/7scenes_office_nerfslam_normal.jpg" alt="NeRF-SLAM">
+              <img src="resources/recon/7scenes/7scenes_office_dim_normal.jpg" alt="DIM-SLAM">
+              <img src="resources/recon/7scenes/7scenes_office_droid_normal.jpg" alt="DROID-SLAM">
+              <img src="resources/recon/7scenes/7scenes_office_ours_normal.jpg" alt="NICER-SLAM (Ours)">
+              <img src="resources/recon/7scenes/7scenes_office_gt_normal.jpg" alt="GT">
+          </div>
+        </div>
+        
+        
+       
+
+        <!-- <div class="content has-text-centered">
+          <video class="video" width="100%" id="xyalias9" loop playsinline autoplay muted src="resources/bonsai_3dgs_ewa_vs_ours.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+          <canvas height=0 class="videoMerge" id="xyalias9Merge"></canvas>
+        </div> -->
+
+        <!-- <div class="content has-text-justified">
+          <p>
+            Here, we show more comparisons with 3DGS + EWA. Both models are trained with downsampled images with factor 8 and render at higher-resolution. 
+            GT (Training resolution) is the image we used for training but bilinearly upsampled to higher-resolution for reference and GT (8x resolution) is the real GT image we used for evaluation.
+          </p>
+        </div> -->
+
+        
+
+        <!-- <br> -->
+        <div style="height: 50px;"></div> 
+        <h3 class="title is-4">Self-Captured Outdoor Dataset</h3>
+
+        <h3 class="title is-5">Rendering</h3>
+        <!-- <div class="container"> -->
+          <!-- <ul class="nav nav-tabs nav-fill nav-justified" id="self-rendering">
+            <li class="nav-item">
+              <a class="nav-link" onclick="sevenScenesReconEvent(0)">room0</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" onclick="sevenScenesReconEvent(1)">room1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="sevenScenesReconEvent(2)">room2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="sevenScenesReconEvent(3)">room3</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="sevenScenesReconEvent(4)">room4</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="sevenScenesReconEvent(5)">office0</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="sevenScenesReconEvent(6)">office1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="sevenScenesReconEvent(7)">office2</a>
+            </li>
+        </ul> -->
+        
+          <div class="b-dics" style="width: 1000px; font-weight: 600;">
+              <img src="resources/rendering/self/azure_15_colmap.jpg" alt="COLMAP">
+              <img src="resources/rendering/self/azure_15_tandem.jpg" alt="TANDEM">
+              <img src="resources/rendering/self/azure_15_nerfslam.jpg" alt="NeRF-SLAM">
+              <img src="resources/rendering/self/azure_15_droid.jpg" alt="DROID-SLAM">
+              <img src="resources/rendering/self/azure_15_ours.jpg" alt="NICER-SLAM (Ours)">
+          </div>
+        <!-- </div> -->
+        <div style="height: 50px;"></div>
+        <h3 class="title is-5">Reconstruction</h3>
+
+        <div class="b-dics" style="width: 1000px; font-weight: 600;">
+          <img src="resources/recon/self/azure_11_colmap_normal.jpg" alt="COLMAP">
+          <img src="resources/recon/self/azure_11_tandem_normal.jpg" alt="TANDEM">
+          <img src="resources/recon/self/azure_11_nerfslam_normal.jpg" alt="NeRF-SLAM">
+          <img src="resources/recon/self/azure_11_droid_normal.jpg" alt="DROID-SLAM">
+          <img src="resources/recon/self/azure_11_ours_normal.jpg" alt="NICER-SLAM (Ours)">
+      </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{Zhu2023NICER,
+  author={Zhu, Zihan and Peng, Songyou and Larsson, Viktor and Cui, Zhaopeng and Oswald, Martin R and Geiger, Andreas and Pollefeys, Marc},
+  title     = {NICER-SLAM: Neural Implicit Scene Encoding for RGB SLAM},
+  booktitle = {International Conference on 3D Vision (3DV)},
+  month     = {March},
+  year      = {2024},
+}</code></pre>
+  </div>
+</section>
+
+<section class="section" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgements</h2>
+    This project is partially supported by the SONY Research Award Program and a research grant by FIFA. The authors thank the Max Planck ETH Center for Learning Systems (CLS) for supporting Songyou Peng and the strategic research project ELLIIT for supporting Viktor Larsson. We thank Zehao Yu, Yiming Zhao, Weicai Ye, Boyang Sun, Jianhao Zheng, and Heng Li for their helpful discussion.
+  </div>
+</section>
+
+<!-- <section class="section" id="References">
+  <div class="container is-max-desktop content">
+
+        <h3 class="title is-4">References</h3>
+        <div class="content has-text-justified">
+          <ul>
+            <li>
+              <a href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/" target="_blank">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a>
+            </li>
+            <li>
+              <a href="https://www.cs.umd.edu/~zwicker/publications/EWASplatting-TVCG02.pdf" target="_blank">EWA Splatting</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+            This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
+            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template. 
+            The video comparison with sliding bar is from <a href="https://dorverbin.github.io/refnerf/">Ref-NeRF</a>. 
+            The image comparison with sliding bar is from <a href="https://research.nvidia.com/labs/dir/neuralangelo/">Neuralangelo</a>. 
+          </p>
+        </div>
+      </div>
+          <p></p>
+        </div>
+      </div>
+</footer>
+
+</body>
+</html>
