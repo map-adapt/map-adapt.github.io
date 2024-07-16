@@ -155,12 +155,13 @@
         <h2 class="title is-3" style="margin-top: -30px">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Neural implicit representations have recently become popular in simultaneous localization and mapping (SLAM), especially in dense visual SLAM.
-            However, existing works either rely on RGB-D sensors or require a separate monocular SLAM approach for camera tracking, and fail to produce high-fidelity 3D dense reconstructions.
-            To address these shortcomings, we present NICER-SLAM, a dense RGB SLAM system that simultaneously optimizes for camera poses and a hierarchical neural implicit map representation, which also allows for high-quality novel view synthesis.
-            To facilitate the optimization process for mapping, we integrate additional supervision signals including easy-to-obtain monocular geometric cues and optical flow, and also introduce a simple warping loss to further enforce geometric consistency.
-            Moreover, to further boost performance in complex large-scale scenes, we also propose a local adaptive transformation from signed distance functions (SDFs) to density in the volume rendering equation.
-            On multiple challenging indoor and outdoor datasets, NICER-SLAM demonstrates strong performance in dense mapping, novel view synthesis, and tracking, even competitive with recent RGB-D SLAM systems.
+            Creating 3D semantic reconstructions of environments is fundamental to many applications, especially when related to autonomous agent operation (e.g. goal-oriented navigation or object interaction and manipulation).
+            Commonly, 3D semantic reconstruction systems capture the entire scene in the same level of detail. 
+            However, certain tasks (e.g. object interaction) require a fine-grained and high-resolution map, particularly if the objects to interact are of small size or intricate geometry. 
+            In recent practice, this leads to the entire map being in the same high-quality resolution, which results in increased computational and storage costs. 
+            To address this challenge, we propose <b>MAP-ADAPT</b>, a real-time method for quality-adaptive semantic 3D reconstruction using RGBD frames. 
+            MAP-ADAPT is the first adaptive semantic 3D mapping algorithm that, unlike prior work, generates directly a single map with regions of different quality based on both the semantic information and the geometric complexity of the scene. 
+            Leveraging a semantic SLAM pipeline for pose and semantic estimation, we achieve comparable or superior results to state-of-the-art methods on synthetic and real-world data, while significantly reducing storage and computation requirements.
           </p>
         </div>
       </div>
@@ -172,7 +173,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Video</h2>
         <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/H4cOCa3oUno?rel=0&amp;showinfo=0"
+          <iframe src="https://www.youtube.com/embed/MB2D2j-rJ8E?rel=0&amp;showinfo=0"
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
@@ -193,11 +194,13 @@
       <div class="column is-full-width">
         <h2 class="title is-3" style="margin-top: -20px">Method</h2>
 
-        <img src="./resources/pipeline_overview_.jpg" class="center">
+        <img src="./resources/pipeline.jpg" class="center">
         <div class="content has-text-justified">
           <p style="margin-top: 30px">
-            <b>NICER-SLAM</b> takes only an RGB stream as input and outputs both the camera poses as well as a learned hierarchical scene representation for geometry and colors.
-            To realize an end-to-end joint mapping and tracking, we render predicted colors, depths, normals and optimize wrt. the input RGB and monocular cues. Moreover, we further enforce the geometric consistency with an RGB warping loss and an optical flow loss.
+            <b>MAP-ADAPT</b> (a) Given RGBD frames, we estimate (b-i) semantic segmentation and (b-iv) camera pose and compute (b-ii) geometric complexity. 
+            (c-i) We integrate geometric and semantic information (b-iii) on the TSDF voxel map. 
+            The geometric complexity and the semantic label will define the voxel size of that region of the map. 
+            (c-ii) shows the multi-resolution mesh output. The adaptive structure we use is shown in (c-iii).
           </p>
         </div>
 
@@ -208,11 +211,36 @@
   </div>
 </section>
 
-
 <section class="section">
   <div class="container is-max-desktop">
 
-    <!-- Results. -->
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" style="margin-top: -20px">Qualitative Results</h2>
+
+        <img src="./resources/qualitative.jpg" class="center"  style="margin-top: 20px;">
+
+        <div class="content has-text-justified">
+          <p style="margin-top: 30px">
+            Top example is on <b>HSSD</b> and bottom one on <b>ScanNet</b> datasets. 
+            Geometric and completion errors are shown as heatmaps; the darker the color, the closer to the GT geometry. 
+            For semantic map, results are colorized per quality level; different semantics in the same quality level range from brighter to darker. 
+            Another heatmap is used to show the estimated geometric complexity. 
+            We highlight regions that are classified into high-quality semantics (<span style="color: red; font-style: italic;">red block</span>) or have large geometric variance (<span style="color: orange; font-style: italic;">orange block</span>).
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+  </div>
+</section>
+
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+
     <div class="columns is-centered ">
       <div class="column is-full-width">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Additional Results</h2>
@@ -265,40 +293,9 @@
         
         <div style="height: 50px;"></div> 
         <h3 class="title is-4">7-Scenes Dataset</h3>
-        <!-- <div class="content has-text-justified">
-          <p>
-            Replacing the 2D dilation of 3DGS with an EWA (elliptical weighted average) filter, denoted as 3DGS + EWA, reduces the dilation and erosion artifacts.
-            However, it produces high-frequency artifacts when zooming in, while our method is free of such artifacts, as shown in the following comparisons.
-          </p>
-        </div> -->
+
         
         <div class="container">
-          <!-- <ul class="nav nav-tabs nav-fill nav-justified" id="7scenes-recon">
-              <li class="nav-item">
-                <a class="nav-link" onclick="sevenScenesReconEvent(0)">room0</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" onclick="sevenScenesReconEvent(1)">room1</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="sevenScenesReconEvent(2)">room2</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="sevenScenesReconEvent(3)">room3</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="sevenScenesReconEvent(4)">room4</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="sevenScenesReconEvent(5)">office0</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="sevenScenesReconEvent(6)">office1</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="sevenScenesReconEvent(7)">office2</a>
-              </li>
-          </ul> -->
           <div class="b-dics" style="width: 1000px; font-weight: 600;">
               <img src="resources/recon/7scenes/7scenes_office_nice_normal.jpg" alt="NICE-SLAM">
               <img src="resources/recon/7scenes/7scenes_office_nerfslam_normal.jpg" alt="NeRF-SLAM">
@@ -311,53 +308,10 @@
         
         
        
-
-        <!-- <div class="content has-text-centered">
-          <video class="video" width="100%" id="xyalias9" loop playsinline autoplay muted src="resources/bonsai_3dgs_ewa_vs_ours.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-          <canvas height=0 class="videoMerge" id="xyalias9Merge"></canvas>
-        </div> -->
-
-        <!-- <div class="content has-text-justified">
-          <p>
-            Here, we show more comparisons with 3DGS + EWA. Both models are trained with downsampled images with factor 8 and render at higher-resolution. 
-            GT (Training resolution) is the image we used for training but bilinearly upsampled to higher-resolution for reference and GT (8x resolution) is the real GT image we used for evaluation.
-          </p>
-        </div> -->
-
-        
-
-        <!-- <br> -->
         <div style="height: 50px;"></div> 
         <h3 class="title is-4">Self-Captured Outdoor Dataset</h3>
 
         <h3 class="title is-5">Rendering</h3>
-        <!-- <div class="container"> -->
-          <!-- <ul class="nav nav-tabs nav-fill nav-justified" id="self-rendering">
-            <li class="nav-item">
-              <a class="nav-link" onclick="sevenScenesReconEvent(0)">room0</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" onclick="sevenScenesReconEvent(1)">room1</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="sevenScenesReconEvent(2)">room2</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="sevenScenesReconEvent(3)">room3</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="sevenScenesReconEvent(4)">room4</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="sevenScenesReconEvent(5)">office0</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="sevenScenesReconEvent(6)">office1</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="sevenScenesReconEvent(7)">office2</a>
-            </li>
-        </ul> -->
         
           <div class="b-dics" style="width: 1000px; font-weight: 600;">
               <img src="resources/rendering/self/azure_15_colmap.jpg" alt="COLMAP">
@@ -366,7 +320,7 @@
               <img src="resources/rendering/self/azure_15_droid.jpg" alt="DROID-SLAM">
               <img src="resources/rendering/self/azure_15_ours.jpg" alt="NICER-SLAM (Ours)">
           </div>
-        <!-- </div> -->
+
         <div style="height: 50px;"></div>
         <h3 class="title is-5">Reconstruction</h3>
 
@@ -382,7 +336,7 @@
     </div>
 
   </div>
-</section>
+</section>  -->
 
 
 
@@ -399,12 +353,12 @@
   </div>
 </section> -->
 
-<section class="section" id="Acknowledgements">
+<!-- <section class="section" id="Acknowledgements">
   <div class="container is-max-desktop content">
     <h2 class="title">Acknowledgements</h2>
     This project is partially supported by the SONY Research Award Program and a research grant by FIFA. The authors thank the Max Planck ETH Center for Learning Systems (CLS) for supporting Songyou Peng and the strategic research project ELLIIT for supporting Viktor Larsson. We thank Zehao Yu, Yiming Zhao, Weicai Ye, Boyang Sun, Jianhao Zheng, and Heng Li for their helpful discussion.
   </div>
-</section>
+</section> -->
 
 <!-- <section class="section" id="References">
   <div class="container is-max-desktop content">
@@ -436,8 +390,8 @@
             Commons Attribution-ShareAlike 4.0 International License</a>.
             This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
             We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template. 
-            The video comparison with sliding bar is from <a href="https://dorverbin.github.io/refnerf/">Ref-NeRF</a>. 
-            The image comparison with sliding bar is from <a href="https://research.nvidia.com/labs/dir/neuralangelo/">Neuralangelo</a>. 
+            <!-- The video comparison with sliding bar is from <a href="https://dorverbin.github.io/refnerf/">Ref-NeRF</a>.  -->
+            <!-- The image comparison with sliding bar is from <a href="https://research.nvidia.com/labs/dir/neuralangelo/">Neuralangelo</a>.  -->
           </p>
         </div>
       </div>
