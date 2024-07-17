@@ -98,134 +98,116 @@ document.addEventListener('DOMContentLoaded', domReady);
             }
         }
 
-        function replicaRenderingEvent(idx) {
-            let dics = document.querySelectorAll('.b-dics')[0]
+        function hssdMaskEvent(idx) {
+            let dics = document.querySelectorAll('.b-dics')[1]
             let sections = dics.getElementsByClassName('b-dics__section')
-            let imagesLength = 6
+            let imagesLength = 3
             for (let i = 0; i < imagesLength; i++) {
                 let image = sections[i].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0]
                 switch (idx) {
                     case 0:
-                        image.src = 'resources/rendering/replica/room0';
+                        switch (i) {
+                            case 0:
+                                image.src = "resources/reconstruction/HSSD/fix_1cm_small_mask.png"
+                                image.alt = "Fix-size (1cm)"
+                                break;
+                            case 1:
+                                image.src = "resources/reconstruction/HSSD/p.png"
+                                break;
+                            case 2:
+                                image.src = "resources/reconstruction/HSSD/ours_geo_small_mask.png"
+                                break;
+                        }
                         break;
                     case 1:
-                        image.src = 'resources/rendering/replica/room1';
+                        switch (i) {
+                            case 0:
+                                image.src = "resources/reconstruction/HSSD/fix_4cm_middle_mask.png"
+                                image.alt = "Fix-size (4cm)"
+                                break;
+                            case 1:
+                                image.src = "resources/reconstruction/HSSD/p.png"
+                                break;
+                            case 2:
+                                image.src = "resources/reconstruction/HSSD/ours_middle_mask.png"
+                                break;
+                        }
                         break;
                     case 2:
-                        image.src = 'resources/rendering/replica/room2';
-                        break;
-                    case 3:
-                        image.src = 'resources/rendering/replica/office0';
-                        break;
-                    case 4:
-                        image.src = 'resources/rendering/replica/office1';
-                        break;
-                    case 5:
-                        image.src = 'resources/rendering/replica/office2';
-                        break;
-                    case 6:
-                        image.src = 'resources/rendering/replica/office3';
-                        break;
-                    case 7:
-                        image.src = 'resources/rendering/replica/office4';
-                        break;    
-                }
-                switch (i) {
-                    case 0:
-                        image.src = image.src + '_nice.jpg';
-                        break;
-                    case 1:
-                        image.src = image.src + '_dim.jpg';
-                        break;
-                    case 2:
-                        image.src = image.src + '_droid.jpg';
-                        break;
-                    case 3:
-                        image.src = image.src + '_ours.png';
-                        break;
-                    case 4:
-                        image.src = image.src + '_gt.png';
-                        break;
+                        switch (i) {
+                            case 0:
+                                image.src = "resources/reconstruction/HSSD/fix_8cm_large_mask.png"
+                                image.alt = "Fix-size (8cm)"
+                                break;
+                            case 1:
+                                image.src = "resources/reconstruction/HSSD/p.png"
+                                break;
+                            case 2:
+                                image.src = "resources/reconstruction/HSSD/ours_large_mask.png"
+                                break;
+                        }
+                        break;dics
 
-                }
-            }
-
-            let scene_list = document.getElementById("replica-rendering").children;
-            for (let i = 0; i < scene_list.length; i++) {
-                if (idx == i) {
-                    scene_list[i].children[0].className = "nav-link active"
-                }
-                else {
-                    scene_list[i].children[0].className = "nav-link"
                 }
             }
         }
 
-        function sevenScenesReconEvent(idx) {
-            let dics = document.querySelectorAll('.b-dics')[0]
+
+        function scannetMaskEvent(idx) {
+            let dics = document.querySelectorAll('.b-dics')[3]
             let sections = dics.getElementsByClassName('b-dics__section')
-            let imagesLength = 6
+            let imagesLength = 3
             for (let i = 0; i < imagesLength; i++) {
                 let image = sections[i].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0]
                 switch (idx) {
                     case 0:
-                        image.src = 'resources/recon/7scenes/room0';
+                        switch (i) {
+                            case 0:
+                                image.src = "resources/reconstruction/ScanNet/fix_1cm_small_mask.png"
+                                image.alt = "Fix-size (1cm)"
+                                break;
+                            case 1:
+                                image.src = "resources/reconstruction/ScanNet/p.png"
+                                break;
+                            case 2:
+                                image.src = "resources/reconstruction/ScanNet/ours_geo_small_mask.png"
+                                break;
+                        }
                         break;
                     case 1:
-                        image.src = 'resources/recon/7scenes/room1';
+                        switch (i) {
+                            case 0:
+                                image.src = "resources/reconstruction/ScanNet/fix_4cm_middle_mask.png"
+                                image.alt = "Fix-size (4cm)"
+                                break;
+                            case 1:
+                                image.src = "resources/reconstruction/ScanNet/p.png"
+                                break;
+                            case 2:
+                                image.src = "resources/reconstruction/ScanNet/ours_middle_mask.png"
+                                break;
+                        }
                         break;
                     case 2:
-                        image.src = 'resources/recon/7scenes/room2';
-                        break;
-                    case 3:
-                        image.src = 'resources/recon/7scenes/room3';
-                        break;
-                    case 4:
-                        image.src = 'resources/recon/7scenes/room4';
-                        break;
-                    case 5:
-                        image.src = 'resources/recon/7scenes/office0';
-                        break;
-                    case 6:
-                        image.src = 'resources/recon/7scenes/office1';
-                        break;
-                    case 7:
-                        image.src = 'resources/recon/7scenes/office2';
-                        break;    
-                }
-                switch (i) {
-                    case 0:
-                        image.src = image.src + '_nice.jpg';
-                        break;
-                    case 1:
-                        image.src = image.src + '_nerfslam.jpg';
-                        break;
-                    case 2:
-                        image.src = image.src + '_dim.jpg';
-                        break;
-                    case 3:
-                        image.src = image.src + '_droid.jpg';
-                        break;
-                    case 4:
-                        image.src = image.src + '_ours.jpg';
-                        break;
-                    case 5:
-                        image.src = image.src + '_gt.jpg';
-                        break;
+                        switch (i) {
+                            case 0:
+                                image.src = "resources/reconstruction/ScanNet/fix_8cm_large_mask.png"
+                                image.alt = "Fix-size (8cm)"
+                                break;
+                            case 1:
+                                image.src = "resources/reconstruction/ScanNet/p.png"
+                                break;
+                            case 2:
+                                image.src = "resources/reconstruction/ScanNet/ours_large_mask.png"
+                                break;
+                        }
+                        break;dics
 
-                }
-            }
-
-            let scene_list = document.getElementById("7scenes-recon").children;
-            for (let i = 0; i < scene_list.length; i++) {
-                if (idx == i) {
-                    scene_list[i].children[0].className = "nav-link active"
-                }
-                else {
-                    scene_list[i].children[0].className = "nav-link"
                 }
             }
         }
+
+        
 
 
         function ablation3DEvent(idx) {

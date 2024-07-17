@@ -211,13 +211,99 @@
   </div>
 </section>
 
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Results. -->
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Qualitative Results</h2>
+
+        <h3 class="title is-4">HSSD Dataset</h3>
+
+        <h3 class="title is-5">Overall Reconstruction</h3>
+        
+        <div class="container">
+          <div id="overall-hssd" class="b-dics" style="width: 1000px; font-weight: 600;">
+              <img src="resources/reconstruction/HSSD/fix_1cm.png" alt="Fixed-size (1cm)">
+              <img src="resources/reconstruction/HSSD/fix_4cm.png" alt="Fixed-size (4cm)">
+              <img src="resources/reconstruction/HSSD/fix_8cm.png" alt="Fixed-size (8cm)">
+              <img src="resources/reconstruction/HSSD/p.png" alt="Multi-TSDFs">
+              <img src="resources/reconstruction/HSSD/ours.png" alt="MAP-ADAPT-S (Ours)">
+              <img src="resources/reconstruction/HSSD/ours_geo.png" alt="MAP-ADAPT-SG (Ours)">
+          </div>
+        </div>
+
+        <div style="height: 30px;"></div> 
+        <h3 class="title is-5">Masks of semantics per quality level</h3>
+        <div class="container">
+          <ul class="nav nav-tabs nav-fill nav-justified" id="replica-rendering">
+            <li class="nav-item active">
+              <a class="nav-link" onclick="hssdMaskEvent(0)">fine (1cm)</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="hssdMaskEvent(1)">middle (4cm)</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="hssdMaskEvent(2)">coarse (8cm)</a>
+            </li>
+        </ul>
+        <div class="b-dics" style="width: 1000px; font-weight: 600;">
+            <img src="resources/reconstruction/HSSD/fix_1cm_small_mask.png" alt="Fix-size (1cm)">
+            <img src="resources/reconstruction/HSSD/p.png" alt="Multi-TSDFs">
+            <img src="resources/reconstruction/HSSD/ours_geo_small_mask.png" alt="MAP-ADAPT-S (Ours)">
+        </div>
+
+        <div style="height: 30px;"></div> 
+        <h3 class="title is-4">ScanNet Dataset</h3>
+
+        <h3 class="title is-5">Overall Reconstruction</h3>
+        
+        <div class="container">
+          <div id="overall-hssd" class="b-dics" style="width: 1000px; font-weight: 600;">
+              <img src="resources/reconstruction/ScanNet/fix_1cm.png" alt="Fixed-size (1cm)">
+              <img src="resources/reconstruction/ScanNet/fix_4cm.png" alt="Fixed-size (4cm)">
+              <img src="resources/reconstruction/ScanNet/fix_8cm.png" alt="Fixed-size (8cm)">
+              <img src="resources/reconstruction/ScanNet/p.png" alt="Multi-TSDFs">
+              <img src="resources/reconstruction/ScanNet/ours.png" alt="MAP-ADAPT-S (Ours)">
+              <img src="resources/reconstruction/ScanNet/ours_geo.png" alt="MAP-ADAPT-SG (Ours)">
+          </div>
+        </div>
+
+        <div style="height: 30px;"></div> 
+        <h3 class="title is-5">Masks of semantics per quality level</h3>
+        <div class="container">
+          <ul class="nav nav-tabs nav-fill nav-justified" id="replica-rendering">
+            <li class="nav-item active">
+              <a class="nav-link" onclick="scannetMaskEvent(0)">fine (1cm)</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="scannetMaskEvent(1)">middle (4cm)</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="scannetMaskEvent(2)">coarse (8cm)</a>
+            </li>
+        </ul>
+        <div class="b-dics" style="width: 1000px; font-weight: 600;">
+            <img src="resources/reconstruction/ScanNet/fix_1cm_small_mask.png" alt="Fix-size (1cm)">
+            <img src="resources/reconstruction/ScanNet/p.png" alt="Multi-TSDFs">
+            <img src="resources/reconstruction/ScanNet/ours_geo_small_mask.png" alt="MAP-ADAPT-S (Ours)">
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <section class="section">
   <div class="container is-max-desktop">
 
     <!-- Method. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3" style="margin-top: -20px">Qualitative Results</h2>
+        <h2 class="title is-3" style="margin-top: -20px">Additional Results</h2>
 
         <img src="./resources/qualitative.jpg" class="center"  style="margin-top: 20px;">
 
@@ -236,146 +322,6 @@
 
   </div>
 </section>
-
-
-<!-- <section class="section">
-  <div class="container is-max-desktop">
-
-    <div class="columns is-centered ">
-      <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Additional Results</h2>
-
-        <h3 class="title is-4">Replica Dataset</h3>
-
-        <h3 class="title is-5">Reconstruction</h3>
-        <div class="embed-responsive embed-responsive-16by9">
-
-          <iframe style="clip-path: inset(1px 1px)" src="https://sketchfab.com/playlists/embed?collection=98147cf5e0e44418931f52a9646661fc&autostart=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" mozallowfullscreen="true" webkitallowfullscreen="true" width="100%" height="100%" frameborder="0"></iframe>
-        </div>
-
-        <div style="height: 30px;"></div> 
-        <h3 class="title is-5">Rendering</h3>
-        <div class="container">
-          <ul class="nav nav-tabs nav-fill nav-justified" id="replica-rendering">
-              <li class="nav-item active">
-                <a class="nav-link" onclick="replicaRenderingEvent(0)">room0</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="replicaRenderingEvent(1)">room1</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="replicaRenderingEvent(2)">room2</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="replicaRenderingEvent(3)">office0</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="replicaRenderingEvent(4)">office1</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="replicaRenderingEvent(5)">office2</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="replicaRenderingEvent(6)">office3</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" onclick="replicaRenderingEvent(7)">office4</a>
-              </li>
-          </ul>
-          <div class="b-dics" style="width: 1000px; font-weight: 600;">
-              <img src="resources/rendering/replica/room0_nice.jpg" alt="NICE-SLAM">
-              <img src="resources/rendering/replica/room0_dim.jpg" alt="DIM-SLAM">
-              <img src="resources/rendering/replica/room0_droid.jpg" alt="DROID-SLAM">
-              <img src="resources/rendering/replica/room0_ours.png" alt="NICER-SLAM (Ours)">
-              <img src="resources/rendering/replica/room0_gt.png" alt="GT">
-          </div>
-        </div>
-        
-        <div style="height: 50px;"></div> 
-        <h3 class="title is-4">7-Scenes Dataset</h3>
-
-        
-        <div class="container">
-          <div class="b-dics" style="width: 1000px; font-weight: 600;">
-              <img src="resources/recon/7scenes/7scenes_office_nice_normal.jpg" alt="NICE-SLAM">
-              <img src="resources/recon/7scenes/7scenes_office_nerfslam_normal.jpg" alt="NeRF-SLAM">
-              <img src="resources/recon/7scenes/7scenes_office_dim_normal.jpg" alt="DIM-SLAM">
-              <img src="resources/recon/7scenes/7scenes_office_droid_normal.jpg" alt="DROID-SLAM">
-              <img src="resources/recon/7scenes/7scenes_office_ours_normal.jpg" alt="NICER-SLAM (Ours)">
-              <img src="resources/recon/7scenes/7scenes_office_gt_normal.jpg" alt="GT">
-          </div>
-        </div>
-        
-        
-       
-        <div style="height: 50px;"></div> 
-        <h3 class="title is-4">Self-Captured Outdoor Dataset</h3>
-
-        <h3 class="title is-5">Rendering</h3>
-        
-          <div class="b-dics" style="width: 1000px; font-weight: 600;">
-              <img src="resources/rendering/self/azure_15_colmap.jpg" alt="COLMAP">
-              <img src="resources/rendering/self/azure_15_tandem.jpg" alt="TANDEM">
-              <img src="resources/rendering/self/azure_15_nerfslam.jpg" alt="NeRF-SLAM">
-              <img src="resources/rendering/self/azure_15_droid.jpg" alt="DROID-SLAM">
-              <img src="resources/rendering/self/azure_15_ours.jpg" alt="NICER-SLAM (Ours)">
-          </div>
-
-        <div style="height: 50px;"></div>
-        <h3 class="title is-5">Reconstruction</h3>
-
-        <div class="b-dics" style="width: 1000px; font-weight: 600;">
-          <img src="resources/recon/self/azure_11_colmap_normal.jpg" alt="COLMAP">
-          <img src="resources/recon/self/azure_11_tandem_normal.jpg" alt="TANDEM">
-          <img src="resources/recon/self/azure_11_nerfslam_normal.jpg" alt="NeRF-SLAM">
-          <img src="resources/recon/self/azure_11_droid_normal.jpg" alt="DROID-SLAM">
-          <img src="resources/recon/self/azure_11_ours_normal.jpg" alt="NICER-SLAM (Ours)">
-      </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>  -->
-
-
-
-<!-- <section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@inproceedings{Zhu2023NICER,
-  author={Zhu, Zihan and Peng, Songyou and Larsson, Viktor and Cui, Zhaopeng and Oswald, Martin R and Geiger, Andreas and Pollefeys, Marc},
-  title     = {NICER-SLAM: Neural Implicit Scene Encoding for RGB SLAM},
-  booktitle = {International Conference on 3D Vision (3DV)},
-  month     = {March},
-  year      = {2024},
-}</code></pre>
-  </div>
-</section> -->
-
-<!-- <section class="section" id="Acknowledgements">
-  <div class="container is-max-desktop content">
-    <h2 class="title">Acknowledgements</h2>
-    This project is partially supported by the SONY Research Award Program and a research grant by FIFA. The authors thank the Max Planck ETH Center for Learning Systems (CLS) for supporting Songyou Peng and the strategic research project ELLIIT for supporting Viktor Larsson. We thank Zehao Yu, Yiming Zhao, Weicai Ye, Boyang Sun, Jianhao Zheng, and Heng Li for their helpful discussion.
-  </div>
-</section> -->
-
-<!-- <section class="section" id="References">
-  <div class="container is-max-desktop content">
-
-        <h3 class="title is-4">References</h3>
-        <div class="content has-text-justified">
-          <ul>
-            <li>
-              <a href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/" target="_blank">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a>
-            </li>
-            <li>
-              <a href="https://www.cs.umd.edu/~zwicker/publications/EWASplatting-TVCG02.pdf" target="_blank">EWA Splatting</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-</section> -->
 
 
 <footer class="footer">
