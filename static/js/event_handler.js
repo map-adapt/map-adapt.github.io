@@ -108,42 +108,42 @@ document.addEventListener('DOMContentLoaded', domReady);
                     case 0:
                         switch (i) {
                             case 0:
-                                image.src = "resources/reconstruction/HSSD/fix_1cm_small_mask.png"
+                                image.src = "resources/reconstruction/HSSD/mask/fine_fix.jpg"
                                 image.alt = "Fix-size (1cm)"
                                 break;
                             case 1:
-                                image.src = "resources/reconstruction/HSSD/p.png"
+                                image.src = "resources/reconstruction/HSSD/mask/fine_p.jpg"
                                 break;
                             case 2:
-                                image.src = "resources/reconstruction/HSSD/ours_geo_small_mask.png"
+                                image.src = "resources/reconstruction/HSSD/mask/fine_ours.jpg"
                                 break;
                         }
                         break;
                     case 1:
                         switch (i) {
                             case 0:
-                                image.src = "resources/reconstruction/HSSD/fix_4cm_middle_mask.png"
+                                image.src = "resources/reconstruction/HSSD/mask/middle_fix.jpg"
                                 image.alt = "Fix-size (4cm)"
                                 break;
                             case 1:
-                                image.src = "resources/reconstruction/HSSD/p.png"
+                                image.src = "resources/reconstruction/HSSD/mask/middle_p.jpg"
                                 break;
                             case 2:
-                                image.src = "resources/reconstruction/HSSD/ours_middle_mask.png"
+                                image.src = "resources/reconstruction/HSSD/mask/middle_ours.jpg"
                                 break;
                         }
                         break;
                     case 2:
                         switch (i) {
                             case 0:
-                                image.src = "resources/reconstruction/HSSD/fix_8cm_large_mask.png"
+                                image.src = "resources/reconstruction/HSSD/mask/coarse_fix.jpg"
                                 image.alt = "Fix-size (8cm)"
                                 break;
                             case 1:
-                                image.src = "resources/reconstruction/HSSD/p.png"
+                                image.src = "resources/reconstruction/HSSD/mask/coarse_p.jpg"
                                 break;
                             case 2:
-                                image.src = "resources/reconstruction/HSSD/ours_large_mask.png"
+                                image.src = "resources/reconstruction/HSSD/mask/coarse_ours.jpg"
                                 break;
                         }
                         break;dics
