@@ -424,22 +424,42 @@ Dics.prototype._createSlider = function(i, initialImagesContainerWidth) {
  * @private
  */
 Dics.prototype._createAltText = function(image, i, imageContainer) {
-  let textContent = image.getAttribute("alt");
-  if (textContent) {
-    let text = this._createElement("p", "b-dics__text");
+  const updateTextContent = () => {
+    let textContent = image.getAttribute("alt");
+    if (textContent) {
+      if (!imageContainer.querySelector(".b-dics__text")) {
+        let text = this._createElement("p", "b-dics__text");
 
-    if (this.options.arrayBackgroundColorText) {
-      text.style.backgroundColor = this.options.arrayBackgroundColorText[i];
+        if (this.options.arrayBackgroundColorText) {
+          text.style.backgroundColor = this.options.arrayBackgroundColorText[i];
+        }
+        if (this.options.arrayColorText) {
+          text.style.color = this.options.arrayColorText[i];
+        }
+
+        text.appendChild(document.createTextNode(textContent));
+        imageContainer.appendChild(text);
+      } else {
+        let existingText = imageContainer.querySelector(".b-dics__text");
+        existingText.textContent = textContent;
+      }
     }
-    if (this.options.arrayColorText) {
-      text.style.color = this.options.arrayColorText[i];
-    }
+  };
 
-    text.appendChild(document.createTextNode(textContent));
+  // Initial text content creation
+  updateTextContent();
 
-    imageContainer.appendChild(text);
-  }
+  // Set up MutationObserver to watch for changes in the alt attribute
+  const observer = new MutationObserver(() => {
+    updateTextContent();
+  });
+
+  observer.observe(image, {
+    attributes: true,
+    attributeFilter: ['alt']
+  });
 };
+
 
 
 /**
