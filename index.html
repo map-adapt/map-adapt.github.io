@@ -223,20 +223,29 @@
         <h3 class="title is-4">HSSD Dataset</h3>
 
         <h3 class="title is-5">Overall Reconstruction</h3>
-        
+
         <div class="container">
-          <div id="overall-hssd" class="b-dics" style="width: 1000px; font-weight: 600;">
-              <img src="resources/reconstruction/HSSD/fix_1cm.png" alt="Fixed-size (1cm)">
-              <img src="resources/reconstruction/HSSD/fix_4cm.png" alt="Fixed-size (4cm)">
-              <img src="resources/reconstruction/HSSD/fix_8cm.png" alt="Fixed-size (8cm)">
-              <img src="resources/reconstruction/HSSD/p.png" alt="Multi-TSDFs">
-              <img src="resources/reconstruction/HSSD/ours.png" alt="MAP-ADAPT-S (Ours)">
-              <img src="resources/reconstruction/HSSD/ours_geo.png" alt="MAP-ADAPT-SG (Ours)">
-          </div>
+          <ul class="nav nav-tabs nav-fill nav-justified" id="replica-rendering">
+            <li class="nav-item active">
+              <a class="nav-link" onclick="hssdEvent(0)">Fix-size (1cm) & Ours</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="hssdEvent(1)">Fix-size (4cm) & Ours</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="hssdEvent(2)">Fix-size (8cm) & Ours</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="hssdEvent(3)">Multi-TSDFs & Ours</a>
+            </li>
+        </ul>
+        <div class="b-dics" style="width: 1000px; font-weight: 600;">
+            <img src="resources/reconstruction/HSSD/fix_1cm.png" alt="Fix-size (1cm) [819 MB]">
+            <img src="resources/reconstruction/HSSD/ours.png" alt="MAP-ADAPT-S (Ours) [297 MB]">
         </div>
 
         <div style="height: 30px;"></div> 
-        <h3 class="title is-5">Masks of semantics per quality level</h3>
+        <h3 class="title is-5">Masks of semantics per quality level (GT)</h3>
         <div class="container">
           <ul class="nav nav-tabs nav-fill nav-justified" id="replica-rendering">
             <li class="nav-item active">
@@ -261,18 +270,27 @@
         <h3 class="title is-5">Overall Reconstruction</h3>
         
         <div class="container">
-          <div id="overall-hssd" class="b-dics" style="width: 1000px; font-weight: 600;">
-              <img src="resources/reconstruction/ScanNet/fix_1cm.png" alt="Fixed-size (1cm)">
-              <img src="resources/reconstruction/ScanNet/fix_4cm.png" alt="Fixed-size (4cm)">
-              <img src="resources/reconstruction/ScanNet/fix_8cm.png" alt="Fixed-size (8cm)">
-              <img src="resources/reconstruction/ScanNet/p.png" alt="Multi-TSDFs">
-              <img src="resources/reconstruction/ScanNet/ours.png" alt="MAP-ADAPT-S (Ours)">
-              <img src="resources/reconstruction/ScanNet/ours_geo.png" alt="MAP-ADAPT-SG (Ours)">
-          </div>
+          <ul class="nav nav-tabs nav-fill nav-justified" id="replica-rendering">
+            <li class="nav-item active">
+              <a class="nav-link" onclick="scannetEvent(0)">Fix-size (1cm) & Ours</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="scannetEvent(1)">Fix-size (4cm) & Ours</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="scannetEvent(2)">Fix-size (8cm) & Ours</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="scannetEvent(3)">Multi-TSDFs & Ours</a>
+            </li>
+        </ul>
+        <div class="b-dics" style="width: 1000px; font-weight: 600;">
+            <img src="resources/reconstruction/ScanNet/fix_1cm.png" alt="Fix-size (1cm) [463 MB]">
+            <img src="resources/reconstruction/ScanNet/ours.png" alt="MAP-ADAPT-S (Ours) [132 MB]">
         </div>
 
         <div style="height: 30px;"></div> 
-        <h3 class="title is-5">Masks of semantics per quality level</h3>
+        <h3 class="title is-5">Masks of semantics per quality level (EST)</h3>
         <div class="container">
           <ul class="nav nav-tabs nav-fill nav-justified" id="replica-rendering">
             <li class="nav-item active">
@@ -290,6 +308,14 @@
             <img src="resources/reconstruction/ScanNet/p.png" alt="Multi-TSDFs">
             <img src="resources/reconstruction/ScanNet/ours_geo_small_mask.png" alt="MAP-ADAPT-S (Ours)">
         </div>
+
+        <div style="height: 20px;"></div> 
+        <p>
+          ScanNet dataset doesn't provide semantic mask for the entire scene. 
+          The semantic mask in the above visualization is from the estimated semantic segmentation per method.
+          There's no mask provided for Multi-TSDFs as multiple submaps labelled as different semantics may occupy the same spatial regions.
+          You can refer to the mask of fix-size method or ours to have a clue on which regions should be reconstructed in which level.
+        </p>
 
       </div>
     </div>

@@ -98,6 +98,61 @@ document.addEventListener('DOMContentLoaded', domReady);
             }
         }
 
+        function hssdEvent(idx) {
+            let dics = document.querySelectorAll('.b-dics')[0]
+            let sections = dics.getElementsByClassName('b-dics__section')
+            let imagesLength = 2
+            for (let i = 0; i < imagesLength; i++) {
+                let image = sections[i].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0]
+                switch (idx) {
+                    case 0:
+                        switch (i) {
+                            case 0:
+                                image.src = "resources/reconstruction/HSSD/fix_1cm.png"
+                                image.alt = "Fix-size (1cm) [819 MB]"
+                                break;
+                            case 1:
+                                image.src = "resources/reconstruction/HSSD/ours.png"
+                                break;
+                        }
+                        break;
+                    case 1:
+                        switch (i) {
+                            case 0:
+                                image.src = "resources/reconstruction/HSSD/fix_4cm.png"
+                                image.alt = "Fix-size (4cm) [37 MB]"
+                                break;
+                            case 1:
+                                image.src = "resources/reconstruction/HSSD/ours.png"
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch (i) {
+                            case 0:
+                                image.src = "resources/reconstruction/HSSD/fix_8cm.png"
+                                image.alt = "Fix-size (8cm) [10 MB]"
+                                break;
+                            case 1:
+                                image.src = "resources/reconstruction/HSSD/ours.png"
+                                break;
+                        }
+                        break;
+                    case 3:
+                        switch (i) {
+                            case 0:
+                                image.src = "resources/reconstruction/HSSD/p.png"
+                                image.alt = "Multi-TSDFs [270 MB]"
+                                break;
+                            case 1:
+                                image.src = "resources/reconstruction/HSSD/ours.png"
+                                break;
+                        }
+                        break;
+                }
+            }
+        }
+
         function hssdMaskEvent(idx) {
             let dics = document.querySelectorAll('.b-dics')[1]
             let sections = dics.getElementsByClassName('b-dics__section')
@@ -152,6 +207,60 @@ document.addEventListener('DOMContentLoaded', domReady);
             }
         }
 
+        function scannetEvent(idx) {
+            let dics = document.querySelectorAll('.b-dics')[2]
+            let sections = dics.getElementsByClassName('b-dics__section')
+            let imagesLength = 2
+            for (let i = 0; i < imagesLength; i++) {
+                let image = sections[i].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0]
+                switch (idx) {
+                    case 0:
+                        switch (i) {
+                            case 0:
+                                image.src = "resources/reconstruction/ScanNet/fix_1cm.png"
+                                image.alt = "Fix-size (1cm) [463 MB]"
+                                break;
+                            case 1:
+                                image.src = "resources/reconstruction/ScanNet/ours.png"
+                                break;
+                        }
+                        break;
+                    case 1:
+                        switch (i) {
+                            case 0:
+                                image.src = "resources/reconstruction/ScanNet/fix_4cm.png"
+                                image.alt = "Fix-size (4cm) [25 MB]"
+                                break;
+                            case 1:
+                                image.src = "resources/reconstruction/ScanNet/ours.png"
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch (i) {
+                            case 0:
+                                image.src = "resources/reconstruction/ScanNet/fix_8cm.png"
+                                image.alt = "Fix-size (8cm) [7 MB]"
+                                break;
+                            case 1:
+                                image.src = "resources/reconstruction/ScanNet/ours.png"
+                                break;
+                        }
+                        break;
+                    case 3:
+                        switch (i) {
+                            case 0:
+                                image.src = "resources/reconstruction/ScanNet/p.png"
+                                image.alt = "Multi-TSDFs [75 MB]"
+                                break;
+                            case 1:
+                                image.src = "resources/reconstruction/ScanNet/ours.png"
+                                break;
+                        }
+                        break;
+                }
+            }
+        }
 
         function scannetMaskEvent(idx) {
             let dics = document.querySelectorAll('.b-dics')[3]
